@@ -2,6 +2,8 @@
 
 A comprehensive toolbox for game design, covering the complete workflow from game idea to module architecture.
 
+[中文文档](./README_CN.md)
+
 ## 🎯 Core Concept: Complementary Skills
 
 | Dimension | Skill A (game-product-designer) | Skill B (game-module-architect) |
