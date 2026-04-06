@@ -1,0 +1,122 @@
+[
+  {
+    "query": "我有个游戏的想法，做一个末日生存题材的roguelike，玩家在废墟中搜刮资源，合成装备，对抗僵尸。想先把策划方案理清楚",
+    "should_trigger": "skill-a",
+    "note": "典型入口：有创意想法，需要产品设计"
+  },
+  {
+    "query": "帮我设计一个类似Among Us的多人社交推理小游戏，目标平台是微信小游戏",
+    "should_trigger": "skill-a",
+    "note": "有平台信息，需要GDD"
+  },
+  {
+    "query": "我们团队准备做一个二次元抽卡RPG，目前只有一个大概的概念，需要一份完整的游戏策划文档",
+    "should_trigger": "skill-a",
+    "note": "明确要求策划文档"
+  },
+  {
+    "query": "想做个休闲解谜游戏放到steam上，类似纪念碑谷那种视觉错位解谜，帮我分析一下品类和设计核心玩法",
+    "should_trigger": "skill-a",
+    "note": "要求品类分析+核心玩法设计，Skill A Phase 0-1"
+  },
+  {
+    "query": "game idea: a cozy farming sim meets tower defense, player grows crops during day and defends against pests at night. Can you help me flesh this out into a proper design document?",
+    "should_trigger": "skill-a",
+    "note": "英文，明确要design document"
+  },
+  {
+    "query": "做一个三国题材的卡牌游戏，核心循环是收集武将组成阵法打关卡。先帮我出一份GDD",
+    "should_trigger": "skill-a",
+    "note": "有核心玩法描述，要GDD"
+  },
+  {
+    "query": "我在想要不要做一个教育类的游戏，让小学生通过闯关学数学，但还没想清楚具体怎么做，你能帮我理一下思路吗",
+    "should_trigger": "skill-a",
+    "note": "模糊想法，没提游戏策划/GDD，但本质是需要产品设计"
+  },
+  {
+    "query": "有个游戏创意：把吃鸡和大逃杀结合密室逃脱，100人进入一栋大楼，需要解谜找钥匙才能逃出。帮我从产品角度分析这个想法可行不",
+    "should_trigger": "skill-a",
+    "note": "要产品分析，是Skill A领域"
+  },
+  {
+    "query": "我们已经有了完整的GDD文档 sanguo_GDD.md，现在要给战斗系统模块出技术设计方案",
+    "should_trigger": "skill-b",
+    "note": "有GDD，要模块技术方案，Skill B"
+  },
+  {
+    "query": "这是我们的策划文档 feishu.cn/wiki/xxx，帮我设计背包系统（模块3）的架构方案，已有的架构契约在 feishu.cn/wiki/yyy",
+    "should_trigger": "skill-b",
+    "note": "有策划文档+契约，要架构方案"
+  },
+  {
+    "query": "基于这份GDD，我需要把抽卡系统做成技术规格文档，包括数据模型、状态机和接口定义",
+    "should_trigger": "skill-b",
+    "note": "从GDD到技术规格，Skill B"
+  },
+  {
+    "query": "module architect: design the matchmaking system (M05) based on the GDD. No architecture contract yet, this is the first module.",
+    "should_trigger": "skill-b",
+    "note": "英文，明确module architect"
+  },
+  {
+    "query": "帮我把GDD里的成长系统做一个技术方案，需要包含兼容性验证和实施计划",
+    "should_trigger": "skill-b",
+    "note": "要技术方案+兼容性验证+实施计划，Skill B Phase 3-5"
+  },
+  {
+    "query": "我想了解一下roguelike游戏的设计理念，有什么经典案例可以参考吗？",
+    "should_trigger": "none",
+    "note": "信息咨询，不需要触发任何skill"
+  },
+  {
+    "query": "帮我写一个TypeScript的战斗系统，实现回合制战斗逻辑，有攻击防御和技能释放",
+    "should_trigger": "none",
+    "note": "要写代码实现，两个skill都不应触发（都不输出代码）"
+  },
+  {
+    "query": "我们的游戏上线后DAU在下降，能分析一下数据帮我找原因吗？这是最近一周的留存数据...",
+    "should_trigger": "none",
+    "note": "运营数据分析，不是设计也不是架构"
+  },
+  {
+    "query": "帮我画一个游戏角色的立绘，二次元风格，拿着大剑的女骑士",
+    "should_trigger": "none",
+    "note": "美术需求，不相关"
+  },
+  {
+    "query": "我们的unity项目编译报错了，能帮我看看这个error log吗",
+    "should_trigger": "none",
+    "note": "debug问题，不相关"
+  },
+  {
+    "query": "帮我把这个游戏策划文档翻译成英文",
+    "should_trigger": "none",
+    "note": "翻译需求，虽然涉及游戏策划但不需要设计或架构"
+  },
+  {
+    "query": "我想给我们的后端微服务架构加一个新模块，处理用户支付逻辑，帮我出个技术方案",
+    "should_trigger": "none",
+    "note": "近似词：模块+技术方案，但是后端微服务不是游戏模块，不应触发Skill B"
+  },
+  {
+    "query": "我有个 monster_quest_GDD.md，想先看看这个GDD写得怎么样，有没有需要补充的地方",
+    "should_trigger": "skill-a",
+    "note": "边缘case：有GDD但想评审/补充，Skill A的GDP检查正好适用"
+  },
+  {
+    "query": "我已经有了一份外部团队写的策划文档，想直接用来做战斗模块的技术设计，不需要再做产品设计了",
+    "should_trigger": "skill-b",
+    "note": "明确跳过Skill A，用外部文档走Skill B"
+  },
+  {
+    "query": "能帮我设计一个游戏的经济系统吗？包括货币、商店、交易这些",
+    "should_trigger": "skill-a",
+    "note": "边缘case：系统设计但偏策划层面（要定义系统），不是技术架构层面"
+  },
+  {
+    "query": "这份GDD的模块卡片缺少体验设计意图（核心决策、爽点时刻），帮我补充一下",
+    "should_trigger": "skill-a",
+    "note": "边缘case：补充GDD内容，GDP-006相关，属于Skill A"
+  }
+]

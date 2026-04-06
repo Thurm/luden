@@ -1,0 +1,88 @@
+{
+  "skill_name": "game-product-designer",
+  "version": "3.0",
+  "description": "Evaluations for game-product-designer skill v3.0 (with GDP). Each eval tests the full pipeline from a one-line idea to a structured GDD with experience design intent and design risk flags.",
+  "assertions_schema": {
+    "has-genre-analysis": "GDD contains genre tag hierarchy + at least 3 reference product analysis with WHY mechanics work, not just WHAT they are",
+    "has-core-loop": "GDD defines 30s loop (Stimulus→Decision→Action→Feedback) AND 5min session loop (entry→core→exit→hook)",
+    "has-system-decomposition": "GDD decomposes game into named modules with responsibilities, each mapping to a loop role or genre mechanic",
+    "has-mvp-boundary": "GDD explicitly separates P0+P1 (MVP) from P2/P3 with justification for each deferral, plus MVP success criteria",
+    "has-dependency-map": "GDD includes module dependency map (layered or matrix) with critical path and recommended build order",
+    "has-assumptions-with-verification": "GDD Appendix A lists numbered assumptions with source phase, reasoning, AND verification method (GDP-005)",
+    "has-platform-analysis": "GDD Chapter 1.4 includes confirmed platform choice, input method, session length expectation, distribution constraints",
+    "has-tech-stack-direction": "GDD Chapter 1.4 includes 2-3 candidate tech stacks with tradeoffs, based on platform choice",
+    "has-experience-design-intent": "Every P0/P1 module card in Chapter 4 includes Experience Design Intent: core decisions (1-3), satisfaction moments (1-2), strategy space (GDP-006)",
+    "has-gdp-risk-flags": "GDD Appendix C exists with Design Risk Flags table (may be empty if all GDP checks passed)",
+    "no-implementation-code": "GDD contains zero function bodies, class implementations, or compilable code; formulas expressed as prose"
+  },
+  "evals": [
+    {
+      "id": 1,
+      "name": "pokemon-like-rpg",
+      "source": "Real user request from production conversation (2026-04-04)",
+      "prompt": "制作一个类似宝可梦的rpg冒险类的游戏",
+      "context": "User provides only a one-line idea with no platform or differentiation info. Skill should trigger ASK_USER gate to collect platform and differentiation before proceeding.",
+      "expected_behavior": {
+        "ask_user_gate": "Skill must ask user about target platform and differentiation before starting pipeline. Must NOT proceed without at least platform confirmation.",
+        "pipeline_phases": "Phase 0 (genre analysis) → Phase 1 (core loops with GDP-002/003 checks) → Phase 2 (system decomposition with GDP-001/004/006 checks) → Phase 3 (GDD assembly with GDP sweep)",
+        "output_file": "{game_name}_GDD.md"
+      },
+      "expected_output": "A complete GDD containing: genre analysis (monster collection RPG with reference to Pokemon/Temtem/Nexomon), core loop design (30s combat/capture loop + 5min exploration session) with GDP-002 independence check, system decomposition with MVP experience loop verification (GDP-001), each MVP module card with Experience Design Intent (GDP-006), platform & tech direction, differentiation declaration (GDP-004), assumptions with verification methods (GDP-005), and GDP risk flags appendix.",
+      "assertions": [
+        {"id": "has-genre-analysis", "weight": 1},
+        {"id": "has-core-loop", "weight": 1},
+        {"id": "has-system-decomposition", "weight": 1},
+        {"id": "has-mvp-boundary", "weight": 1},
+        {"id": "has-dependency-map", "weight": 1},
+        {"id": "has-assumptions-with-verification", "weight": 1},
+        {"id": "has-platform-analysis", "weight": 1},
+        {"id": "has-tech-stack-direction", "weight": 1},
+        {"id": "has-experience-design-intent", "weight": 1},
+        {"id": "has-gdp-risk-flags", "weight": 1},
+        {"id": "no-implementation-code", "weight": 1}
+      ],
+      "passing_score": "11/11 with skill, baseline expected ≤4/11 without skill"
+    },
+    {
+      "id": 2,
+      "name": "sanguo-card-roguelike",
+      "source": "Real user project from production conversation (2026-04-04). User's actual game project '三国·命牌' — the scenario that motivated building this entire toolbox.",
+      "prompt": "我想做一个三国题材的卡牌roguelike游戏，核心玩法是收集武将牌组成阵法，在roguelike地牢中战斗",
+      "context": "User provides a moderately detailed idea with theme, core mechanic (cards + formations), and mode (roguelike dungeon). No platform specified — Skill should ask. This is the 'golden path' scenario because it has a clear genre (roguelike deckbuilder) plus a unique differentiator (formation spatial mechanics).",
+      "expected_behavior": {
+        "ask_user_gate": "Skill must ask about platform. Differentiation question should reference existing competitors like Slay the Spire, 月圆之夜, or 三国杀.",
+        "pipeline_phases": "Phase 0 → Phase 1 → Phase 2 → Phase 3",
+        "output_file": "{game_name}_GDD.md"
+      },
+      "expected_output": "A GDD for a Three Kingdoms card roguelike with: genre analysis referencing Slay the Spire, 月圆之夜, 三国杀, TFT/自走棋; core loops with GDP-002 check (card play decision loop must be fun without meta-progression); system decomposition including card system, formation/synergy system, roguelike run system, dungeon/map system as MVP; each MVP module with Experience Design Intent (GDP-006); differentiation declaration for formation mechanics passing GDP-004 three-criteria test; assumptions with verification (GDP-005); and GDP risk flags appendix. The Three Kingdoms IP must be reflected in gameplay mechanics, not just cosmetic skin.",
+      "assertions": [
+        {"id": "has-genre-analysis", "weight": 1},
+        {"id": "has-core-loop", "weight": 1},
+        {"id": "has-system-decomposition", "weight": 1},
+        {"id": "has-mvp-boundary", "weight": 1},
+        {"id": "has-dependency-map", "weight": 1},
+        {"id": "has-assumptions-with-verification", "weight": 1},
+        {"id": "has-platform-analysis", "weight": 1},
+        {"id": "has-tech-stack-direction", "weight": 1},
+        {"id": "has-experience-design-intent", "weight": 1},
+        {"id": "has-gdp-risk-flags", "weight": 1},
+        {"id": "no-implementation-code", "weight": 1}
+      ],
+      "passing_score": "11/11 with skill, baseline expected ≤4/11 without skill"
+    }
+  ],
+  "grading_history": [
+    {
+      "date": "2026-04-04",
+      "skill_version": "1.0 (before ASK_USER + platform/tech stack)",
+      "assertions_used": 7,
+      "results": {
+        "eval-1-with-skill": "7/7",
+        "eval-1-without-skill": "2/7",
+        "eval-2-with-skill": "7/7",
+        "eval-2-without-skill": "2/7"
+      },
+      "report": "evals/grading_report.md"
+    }
+  ]
+}

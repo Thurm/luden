@@ -1,0 +1,15 @@
+{
+  "name": "game-design-studio",
+  "description": "Game Design Studio — 游戏设计工具箱。从游戏创意到 GDD，再到模块技术方案，全链路设计支持。",
+  "version": "3.0.0",
+  "author": {
+    "name": "Game Design Studio Team"
+  },
+  "license": "MIT",
+  "keywords": ["game", "design", "gdd", "game-design", "module-architecture", "game-dev"],
+  "skills": [
+    "./game-product-designer",
+    "./game-module-architect",
+    "./audit-hook"
+  ]
+}

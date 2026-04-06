@@ -1,0 +1,66 @@
+{
+  "skill_name": "game-module-architect",
+  "version": "3.0",
+  "description": "Evaluations for game-module-architect skill v3.0 (with design intent verification replacing game design analysis). Each eval tests the full 5-phase pipeline from GDD input to module design spec.",
+  "assertions_schema": {
+    "has-design-intent-verification": "Design doc Phase 1 reads Experience Design Intent from GDD module card and verifies technical implementability for each item (feasible/constrained/blocked)",
+    "has-feature-classification": "Features classified as Core/Enhanced/Future with MVP trim decisions and justification",
+    "has-interface-declaration": "Interface Change Declaration with backward compatibility assessment for every change",
+    "has-system-design": "System responsibilities + capabilities table + state machine + event flow — all without implementation code",
+    "has-design-intent-traceability": "Each system design block includes Design Intent Traceability explaining how the technical design serves the GDD's experience goals",
+    "has-data-models": "Data model specs with field tables (name, type, constraint, description) for every model",
+    "has-compat-verification": "Phase 4 compatibility report with conflict classification (Type A/B/C) and resolution",
+    "has-task-plan": "Task breakdown (≤0.5d each) with dependencies, acceptance criteria as scenarios, and effort estimate",
+    "has-tech-stack-recommendation": "Tech stack recommendation section reading from GDD platform info, with rationale and design implications",
+    "no-implementation-code": "Zero function bodies, class implementations, or compilable code; type signatures and pseudocode are OK",
+    "no-game-design-invention": "Architect does NOT invent player decision points, risk/reward models, progression pacing, or strategy depth analysis — these come from the GDD"
+  },
+  "evals": [
+    {
+      "id": 1,
+      "name": "battle-system-from-pokemon-gdd",
+      "source": "End-to-end demo from production conversation (2026-04-04). Skill B consumed the GDD produced by Skill A for the Pokemon-like RPG.",
+      "prompt": "/game-module-architect 基于 monster_quest_GDD.md 设计战斗系统 (M01 Battle System) 的技术方案。模块编号 1。",
+      "context": "Input is the GDD produced by game-product-designer v3.0 for a Pokemon-like RPG. GDD Chapter 1.4 specifies mobile platform with Unity/Cocos Creator candidates. GDD Chapter 4 module cards include Experience Design Intent. No existing architecture contract (first module). This tests the full pipeline without a contract doc.",
+      "input_files": ["monster_quest_GDD.md"],
+      "expected_output": "A design spec covering: design intent verification (reads core decisions, satisfaction moments, strategy space from GDD module card + assesses technical feasibility), feature classification, initial interface design (no contract to review), technical architecture (BattleSystem, DamageCalculator, TurnManager, AISystem described without code) with Design Intent Traceability for each system, data models (BattleState, Move, MonsterInstance), state machine (battle phases), event flow, config schemas, tech stack recommendation based on GDD platform, and implementation task plan with tech context block. Must NOT invent its own player decision points or strategy depth analysis.",
+      "assertions": [
+        {"id": "has-design-intent-verification", "weight": 1},
+        {"id": "has-feature-classification", "weight": 1},
+        {"id": "has-interface-declaration", "weight": 1},
+        {"id": "has-system-design", "weight": 1},
+        {"id": "has-design-intent-traceability", "weight": 1},
+        {"id": "has-data-models", "weight": 1},
+        {"id": "has-compat-verification", "weight": 1},
+        {"id": "has-task-plan", "weight": 1},
+        {"id": "has-tech-stack-recommendation", "weight": 1},
+        {"id": "no-implementation-code", "weight": 1},
+        {"id": "no-game-design-invention", "weight": 1}
+      ],
+      "passing_score": "11/11"
+    },
+    {
+      "id": 2,
+      "name": "formation-system-sanguo",
+      "source": "Original project '三国·命牌' Module 2 from production conversation (2026-04-03). The first module designed with this skill.",
+      "prompt": "设计《三国·命牌》模块二：基础牌组与阵法系统的技术方案。策划文档：sanguo_card_roguelike_GDD.md，架构契约：architecture_contract.md。模块编号 2。",
+      "context": "Input is the GDD for Three Kingdoms card roguelike (with Experience Design Intent in module cards) + an existing architecture contract from Module 1. This tests the full pipeline WITH a contract doc, which should trigger proper Phase 2 (contract review) and Phase 4 (backward compatibility verification).",
+      "input_files": ["sanguo_card_roguelike_GDD.md", "architecture_contract.md"],
+      "expected_output": "A design spec covering: design intent verification (reads card selection decisions, formation placement satisfaction moment, multi-strategy space from GDD + flags any technical constraints), feature classification with MVP trim, interface change declaration extending existing ICard/BattleResult models, technical architecture (DeckSystem, FormationSystem, SynergyDetector) with Design Intent Traceability, compatibility verification against contract with conflict resolution, and task plan. Must NOT define its own player decision points or risk/reward models — only read from GDD.",
+      "assertions": [
+        {"id": "has-design-intent-verification", "weight": 1},
+        {"id": "has-feature-classification", "weight": 1},
+        {"id": "has-interface-declaration", "weight": 1},
+        {"id": "has-system-design", "weight": 1},
+        {"id": "has-design-intent-traceability", "weight": 1},
+        {"id": "has-data-models", "weight": 1},
+        {"id": "has-compat-verification", "weight": 1},
+        {"id": "has-task-plan", "weight": 1},
+        {"id": "has-tech-stack-recommendation", "weight": 1},
+        {"id": "no-implementation-code", "weight": 1},
+        {"id": "no-game-design-invention", "weight": 1}
+      ],
+      "passing_score": "11/11"
+    }
+  ]
+}
